@@ -2,6 +2,7 @@ package med.voll.api.paciente;
 
 import jakarta.persistence.*;
 import med.voll.api.endereco.Endereco;
+import med.voll.api.medico.DadosAtualizacaoMedico;
 
 @Table(name = "pacientes")
 @Entity(name = "paciente")
@@ -91,6 +92,18 @@ public class Paciente {
     @Override
     public int hashCode() {
         return Long.hashCode(id);
+    }
+
+    public void atualizarInformacoes(DadosAtualizacaoPaciente dados) {
+        if (dados.nome() != null) {
+            this.nome = dados.nome();
+        }
+        if (dados.telefone() != null) {
+            this.telefone = dados.telefone();
+        }
+        if (dados.endereco() != null) {
+            this.endereco.atualizarInformacoes(dados.endereco());
+        }
     }
 
 }
