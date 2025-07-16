@@ -1,0 +1,2 @@
+ALTER TABLE pacientes
+    ADD COLUMN cpf VARCHAR(20) NOT NULL;
