@@ -15,6 +15,7 @@ public class Paciente {
     private String email;
     private String telefone;
     private String cpf;
+    private boolean ativo;
 
     @Embedded
     private Endereco endereco;
@@ -79,6 +80,14 @@ public class Paciente {
         this.endereco = endereco;
     }
 
+    public boolean isAtivo() {
+        return ativo;
+    }
+
+    public void setAtivo(boolean ativo) {
+        this.ativo = ativo;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -104,6 +113,10 @@ public class Paciente {
         if (dados.endereco() != null) {
             this.endereco.atualizarInformacoes(dados.endereco());
         }
+    }
+
+    public void inativar() {
+        this.ativo = false;
     }
 
 }
