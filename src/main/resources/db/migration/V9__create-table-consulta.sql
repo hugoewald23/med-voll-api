@@ -1,0 +1,9 @@
+CREATE TABLE consultas (
+    id BIGSERIAL PRIMARY KEY,
+    medico_id BIGINT NOT NULL,
+    paciente_id BIGINT NOT NULL,
+    data TIMESTAMP NOT NULL,
+    motivo_cancelamento VARCHAR(100),
+    CONSTRAINT fk_medico FOREIGN KEY (medico_id) REFERENCES medicos(id),
+    CONSTRAINT fk_paciente FOREIGN KEY (paciente_id) REFERENCES pacientes(id)
+);
