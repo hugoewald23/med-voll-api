@@ -1,4 +1,10 @@
 package med.voll.api.domain.consulta;
 
-public record DadosDetalhamentoConsulta(String id, String idr, String ide, String ids) {
+import java.time.LocalDateTime;
+
+public record DadosDetalhamentoConsulta(Long id, Long idMedico, Long idPaciente, LocalDateTime data) {
+
+    public DadosDetalhamentoConsulta(Consulta consulta) {
+        this(consulta.getId(), consulta.getMedico().getId(), consulta.getPaciente().getId(), consulta.getData());
+    }
 }
